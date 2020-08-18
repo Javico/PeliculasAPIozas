@@ -58,7 +58,9 @@ namespace PeliculasAPI
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
             sqlServerOptions => sqlServerOptions.UseNetTopologySuite()));
 
-            services.AddControllers().AddNewtonsoftJson();
+            services.AddControllers(options => {
+                options.Filters.Add(typeof(FiltroErrores));
+            }).AddNewtonsoftJson();
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -75,6 +77,7 @@ namespace PeliculasAPI
                         Encoding.UTF8.GetBytes(Configuration["jwt:key"])),
                     ClockSkew = TimeSpan.Zero
                 });
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
