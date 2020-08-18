@@ -57,7 +57,7 @@ namespace PeliculasAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> GeneroCreacionDTO(int id ,[FromBody] GeneroCreacionDTO generoCreacionDTO)
+        public async Task<IActionResult> Put(int id ,[FromBody] GeneroCreacionDTO generoCreacionDTO)
         {
             //var entidad = _mapper.Map<Genero>(generoCreacionDTO);
             ////if (id != entidad.Id)

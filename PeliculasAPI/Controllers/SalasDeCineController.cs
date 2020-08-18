@@ -58,7 +58,6 @@ namespace PeliculasAPI.Controllers
                 .ToListAsync();
 
             return salasDeCine;
-                
         }
 
         [HttpPost]
